@@ -1,0 +1,53 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "DynamoDB GetItem",
+  "States": {
+    "DynamoDB GetItem": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::dynamodb:getItem",
+      "Parameters": {
+        "TableName": "Orders",
+        "Key": {
+          "OrderId": {
+            "S.$": "$.OrderId"
+          }
+        }
+      },
+      "Next": "Choice",
+      "ResultPath": "$.result"
+    },
+    "Choice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.result.Item",
+          "IsPresent": true,
+          "Next": "Pass"
+        }
+      ],
+      "Default": "DynamoDB PutItem"
+    },
+    "DynamoDB PutItem": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::dynamodb:putItem",
+      "Parameters": {
+        "TableName": "Orders",
+        "Item": {
+          "OrderId": {
+            "S.$": "$.OrderId"
+          }
+        }
+      },
+      "End": true
+    },
+    "Pass": {
+      "Type": "Pass",
+      "End": true,
+      "Parameters": {
+        "OrderId.$": "$.result.Item.OrderId.S",
+        "CustomerId.$": "$.result.Item.CustomerId.S",
+        "TotalAmount.$": "$.result.Item.TotalAmount.N"
+      }
+    }
+  }
+}

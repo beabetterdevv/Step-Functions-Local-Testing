@@ -1,0 +1,7 @@
+Pre-requisites
+---
+
+docker
+aws cli
+aws profile (preferably administrator access)
+

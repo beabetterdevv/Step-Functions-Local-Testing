@@ -1,0 +1,57 @@
+{
+    "StateMachines": {
+        "MyStateMachine": {
+            "TestCases": {
+                "HappyPath": {
+                    "DynamoDB GetItem": "Mock_GetItemReturnsExistingItem"
+                }
+            }
+        }
+    },
+    "MockedResponses": {
+        "Mock_GetItemReturnsExistingItem": {
+            "0": {
+                "Return": {
+                    "SdkHttpMetadata": {
+                        "AllHttpHeaders": {
+                            "Server": [
+                                "Server"
+                            ],
+                            "Connection": [
+                                "keep-alive"
+                            ],
+                            "x-amzn-RequestId": [
+                                "J76J8QKKLFD59CTFE47K723TSFVV4KQNSO5AEMVJF66Q9ASUAAJG"
+                            ],
+                            "x-amz-crc32": [
+                                "1052398449"
+                            ],
+                            "Content-Length": [
+                                "141"
+                            ],
+                            "Date": [
+                                "Wed, 30 Aug 2023 20:25:40 GMT"
+                            ],
+                            "Content-Type": [
+                                "application/x-amz-json-1.0"
+                            ]
+                        },
+                        "HttpHeaders": {
+                            "Connection": "keep-alive",
+                            "Content-Length": "141",
+                            "Content-Type": "application/x-amz-json-1.0",
+                            "Date": "Wed, 30 Aug 2023 20:25:40 GMT",
+                            "Server": "Server",
+                            "x-amz-crc32": "1052398449",
+                            "x-amzn-RequestId": "J76J8QKKLFD59CTFE47K723TSFVV4KQNSO5AEMVJF66Q9ASUAAJG"
+                        },
+                        "HttpStatusCode": 200
+                    },
+                    "SdkResponseMetadata": {
+                        "RequestId": "J76J8QKKLFD59CTFE47K723TSFVV4KQNSO5AEMVJF66Q9ASUAAJG"
+                    }
+                }
+            }
+        }
+    }
+}
